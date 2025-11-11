@@ -11,11 +11,13 @@ import MeuPerfil from "../pages/MeuPerfil"
 import VisualizarPerfil from "../pages/VisualizarPerfil"
 import Dashboard from "../pages/Dashboard"
 import CriarPost from "../pages/CriarPost"
+import ErrorPage from "../pages/ErrorPage"
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout />,
+        errorElement: <ErrorPage />,
         children: [
             { index: true, element: <Home /> },
             { path: "funcionarios", element: <Funcionarios /> },
