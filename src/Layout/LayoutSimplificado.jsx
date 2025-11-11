@@ -5,7 +5,6 @@ import Footer from "../components/Footer"
 function Layout() {
     return (
         <div>
-            <h1>layout cheio</h1>
             <Navbar />
             <Outlet />
             <Footer />
