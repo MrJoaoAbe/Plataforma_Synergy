@@ -39,7 +39,7 @@ function Navbar() {
 
             <div className="flex items-center col-start-7">
                 <NavLink
-                    to="/seguidores"
+                    to="/mensagens"
                     className={({ isActive }) => `flex items-center justify-center text-4xl h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
                     < FontAwesomeIcon icon={faComment} className="text-white text-4xl" />
                 </NavLink>
