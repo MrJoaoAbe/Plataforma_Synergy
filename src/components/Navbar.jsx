@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faUserDoctor, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faUserDoctor, faUserGroup, faComment } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -10,7 +10,7 @@ function Navbar() {
                 <h1 className="font-extralight text-3xl ml-10">SYNERGY</h1>
             </div>
 
-            <div className="flex items-center col-start-5">
+            <div className="flex items-center col-start-4">
                 <NavLink
                     to="/"
                     className={({ isActive }) => `flex items-center justify-center text-4xl h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
@@ -19,7 +19,7 @@ function Navbar() {
             </div>
 
 
-            <div className="flex items-center col-start-6">
+            <div className="flex items-center col-start-5">
                 <NavLink
                     to="/funcionarios"
                     className={({ isActive }) => `flex items-center justify-center text-4xl h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
@@ -28,7 +28,7 @@ function Navbar() {
 
             </div>
 
-            <div className="flex items-center col-start-7">
+            <div className="flex items-center col-start-6">
                 <NavLink
                     to="/seguidores"
                     className={({ isActive }) => `flex items-center justify-center text-4xl h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
@@ -37,7 +37,16 @@ function Navbar() {
 
             </div>
 
-            <div className="flex items-center justify-end col-start-8 mr-10">
+            <div className="flex items-center col-start-7">
+                <NavLink
+                    to="/seguidores"
+                    className={({ isActive }) => `flex items-center justify-center text-4xl h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
+                    < FontAwesomeIcon icon={faComment} className="text-white text-4xl" />
+                </NavLink>
+
+            </div>
+
+            <div className="flex items-center justify-end col-start-8 mr-20">
                 <NavLink
                     to="/login"
                     className={({ isActive }) => `flex items-center justify-center h-20 ${isActive ? "border-b-4 border-white" : ""} text-white`}>
@@ -53,5 +62,6 @@ function Navbar() {
 
 
 export default Navbar
+
 
 
