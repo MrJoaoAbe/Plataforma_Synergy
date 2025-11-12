@@ -6,7 +6,9 @@ function Layout() {
     return (
         <div>
             <Navbar />
-            <Outlet />
+            <div className="px-20 py-10 gap-10 bg-[#DFDFDF]">
+                <Outlet />
+            </div>
             <Footer />
         </div>
     )
