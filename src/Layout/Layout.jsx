@@ -6,6 +6,7 @@ import Footer from "../components/Footer"
 import MiniPerfil from "../components/MiniPerfil"
 import MelhoresProfissionais from "../components/MelhoresProfissionais"
 import FiltroAvancado from "../components/FiltroAvancado"
+import FiltroPostagens from "../components/FiltroPostagens"
 
 function Layout() {
 
@@ -27,6 +28,7 @@ function Layout() {
                 <div className="w-1/4">
                     <MelhoresProfissionais />
                     {location.pathname === '/funcionarios' && <FiltroAvancado />}
+                    {location.pathname === '/' && <FiltroPostagens />}
                 </div>
             </div>
 
