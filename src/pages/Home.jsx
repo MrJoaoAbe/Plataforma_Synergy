@@ -1,7 +1,19 @@
+import { Link } from "react-router-dom"
+
 function Home() {
     return (
         <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
-            <h1 className="font-extralight text-4xl text-[#859F74] p-15 flex items-center ml-10">HOME</h1>
+            <div className="flex flex-row items-center justify-between px-10">
+                <h1 className="font-extralight text-4xl text-[#859F74] p-15 flex items-center">
+                    HOME
+                </h1>
+                <Link to="/criarPost" className="bg-[#859F74] px-6 py-2 rounded-2xl text-white">
+                    CRIAR POST
+                </Link>
+
+            </div>
+
+
         </div>
     )
 }
