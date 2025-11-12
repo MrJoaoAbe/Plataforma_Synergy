@@ -8,9 +8,12 @@ function Layout() {
     return (
         <div>
             <Navbar />
-            <Outlet />
-            <MiniPerfil />
-            <MelhoresProfissionais />
+            <div className="grid grid-cols-3 p-20">
+                <MiniPerfil />
+                <Outlet />
+                <MelhoresProfissionais />
+            </div>
+
             <Footer />
         </div>
     )
