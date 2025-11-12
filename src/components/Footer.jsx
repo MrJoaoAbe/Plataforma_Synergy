@@ -14,7 +14,7 @@ function Footer() {
                     <div className="flex flex-col gap-2">
                         <h3 className="text-lg font-semibold mb-2">Navegação Simples</h3>
                         <Link to="/" className="hover:text-[#ffffff] transition duration-200">HOME</Link>
-                        <Link to="/sobremim" className="hover:text-[#ffffff] transition duration-2">FUNCIONÁRIOS</Link>
+                        <Link to="/funcionarios" className="hover:text-[#ffffff] transition duration-2">FUNCIONÁRIOS</Link>
                         <Link to="/seguidores" className="hover:text-[#ffffff] transition duration-2">SEGUIDORES</Link>
                         <Link to="/mensagens" className="hover:text-[#ffffff] transition duration-2">MENSAGENS</Link>
                     </div>
