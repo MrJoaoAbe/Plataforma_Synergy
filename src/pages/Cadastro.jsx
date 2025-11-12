@@ -52,6 +52,7 @@ function Cadastro() {
                 area: area,
                 habilidades: [habilidade1, habilidade2, habilidade3],
                 soft_skills: [softSkill1, softSkill2, softSkill3],
+                darkMode: false,
                 idade: idade,
                 experiencias: [
                     {

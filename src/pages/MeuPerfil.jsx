@@ -33,53 +33,53 @@ function MeuPerfil() {
 
 
                 <div className="grid grid-cols-3 gap-6 items-center p-20 px-40 text-[#859F74]">
-                    <img src={FotoExemplo} alt="MinhaFoto" className="w-60 rounded-4xl border-4 border-white shadow-xl" />
+                    <img src={usuarioLogado === null ? '' : usuarioLogado.foto} className="w-60 rounded-4xl border-4 border-white shadow-xl" />
 
                     <div className="flex flex-col space-y-2 gap-4 text-[#859F74]">
                         <div className="flex gap-2 items-center text-4xl font-light">
-                            <p>JOÃO ABE</p>
-                            <p>20</p>
+                            <p>{usuarioLogado === null ? '' : usuarioLogado.nome}</p>
+                            <p>{usuarioLogado === null ? '' : usuarioLogado.idade}</p>
                         </div>
-                        <p className="text-2xl">Engenheiro de Software</p>
-                        <p className="text-2xl">São Paulo</p>
-                        <p className="text-2xl">Desenvolvedor</p>
+                        <p className="text-2xl">{usuarioLogado === null ? '' : usuarioLogado.cargo}</p>
+                        <p className="text-2xl">{usuarioLogado === null ? '' : usuarioLogado.area}</p>
+                        <p className="text-2xl">{usuarioLogado === null ? '' : usuarioLogado.localizacao}</p>
                     </div>
 
                     <div className="flex justify-around text-[#859F74] text-center">
                         <div>
-                            <p className="font-bold text-3xl">10</p>
-                            <p className="text-sm">Estrelas</p>
+                            <p className="font-bold text-3xl">{usuarioLogado === null ? '' : usuarioLogado.avaliacoes}</p>
+                            <p className="text-sm">{usuarioLogado === null ? '' : 'Estrelas'}</p>
                         </div>
                         <div>
-                            <p className="font-bold text-3xl">230</p>
-                            <p className="text-sm">Seguindo</p>
+                            <p className="font-bold text-3xl">{usuarioLogado === null ? '' : usuarioLogado.seguidores.length}</p>
+                            <p className="text-sm">{usuarioLogado === null ? '' : 'Seguidores'}</p>
                         </div>
                         <div>
-                            <p className="font-bold text-3xl">5</p>
-                            <p className="text-sm">Posts</p>
+                            <p className="font-bold text-3xl">{usuarioLogado === null ? '' : usuarioLogado.postagens.length}</p>
+                            <p className="text-sm">{usuarioLogado === null ? '' : 'Posts'}</p>
                         </div>
                     </div>
 
                     <p className="mt-6 col-start-1 col-span-2 text-[#859F74] text-center text-lg">
-                        Engenheiro de Software | Transformando ideias em código e código em valor. Curioso por natureza, sempre em busca de novos desafios.
+                        {usuarioLogado === null ? '' : usuarioLogado.resumo}
                     </p>
 
                     <div className="flex flex-col col-start-3 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-1">
-                                <p className="text-xl font-semibold">EXPERIÊNCIAS</p>
-                                <p className="text-xl">2 anos na Stratesys Tecnologia</p>
+                                <p className="text-xl font-semibold">{usuarioLogado === null ? '' : 'EXPERIÊNCIAS'}</p>
+                                <p className="text-xl">{usuarioLogado === null ? '' : usuarioLogado.experiencias[0].empresa}</p>
                             </div>
 
                             <div className="flex flex-col gap-1">
-                                <p className="text-xl font-semibold">FORMAÇÃO</p>
-                                <p className="text-xl">FIAP</p>
+                                <p className="text-xl font-semibold">{usuarioLogado === null ? '' : 'FORMAÇÃO'}</p>
+                                <p className="text-xl">{usuarioLogado === null ? '' : usuarioLogado.formacao[0].instituicao}</p>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <p className="text-xl font-semibold">IDIOMAS</p>
-                            <p className="text-xl">Inglês</p>
+                            <p className="text-xl font-semibold">{usuarioLogado === null ? '' : 'IDIOMAS'}</p>
+                            <p className="text-xl">{usuarioLogado === null ? '' : usuarioLogado.idiomas[0].idioma}</p>
                         </div>
 
 
@@ -88,11 +88,11 @@ function MeuPerfil() {
                     <div className="flex flex-col col-start-1 col-span-2 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-4">
-                                <p className="text-xl font-semibold">SOFTSKILLS</p>
+                                <p className="text-xl font-semibold">{usuarioLogado === null ? '' : 'SOFTSKILLS'}</p>
                                 <div className="flex flex-row gap-2">
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Trabalho em equipe</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Empatia</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Comunicativo</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[0]}</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[1]}</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[2]}</p>
                                 </div>
 
                             </div>
@@ -103,11 +103,11 @@ function MeuPerfil() {
                     <div className="flex flex-col col-start-1 col-span-2 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-4">
-                                <p className="text-xl font-semibold">HABILIDADES</p>
+                                <p className="text-xl font-semibold">{usuarioLogado === null ? '' : 'HABILIDADES'}</p>
                                 <div className="flex flex-row gap-2">
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">PYTHON</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">SQL</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">REACT</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[0]}</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[1]}</p>
+                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[2]}</p>
                                 </div>
 
                             </div>
