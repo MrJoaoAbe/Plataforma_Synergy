@@ -14,21 +14,21 @@ function MelhoresProfissionais() {
 
             <div className="flex flex-col gap-3">
                 <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Sergio} alt="" className="w-12" />
+                    <img src={Sergio} alt="" className="w-12 rounded-full" />
                     <p className="text-2xl">Sergio Malandro</p>
                     <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
                     <p className="text-2xl">200</p>
                 </div>
 
                 <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Celbit} alt="" className="w-12" />
+                    <img src={Celbit} alt="" className="w-12 rounded-full" />
                     <p className="text-2xl">Celbit</p>
                     <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
                     <p className="text-2xl">200</p>
                 </div>
 
                 <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Ana} alt="" className="w-12" />
+                    <img src={Ana} alt="" className="w-12 rounded-full" />
                     <p className="text-2xl">Ana Dev</p>
                     <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
                     <p className="text-2xl">200</p>
