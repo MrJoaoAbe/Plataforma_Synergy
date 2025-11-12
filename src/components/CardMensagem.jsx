@@ -7,7 +7,7 @@ function CardMensagem() {
             <Link to="/mensagemDireta">
                 <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-5 m-20 shadow-2xl">
                     <div className="flex flex-row gap-10">
-                        <img src={FotoExemplo} alt="Usuario1" className="w-25 rounded-full" />
+                        <img src={FotoExemplo} alt="Usuario1" className="w-20 rounded-full" />
 
                         <div className="flex flex-col justify-center text-[#859F74] mr-20">
                             <p className="text-4xl">JOÃO ABE</p>

@@ -100,9 +100,9 @@ function VisualizarPerfil() {
                         <button className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             ESTRELAR
                         </button>
-                        <button className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <Link to="/mensagemDireta" className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             ENVIAR MENSAGEM
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

@@ -26,7 +26,7 @@ function CardFuncionario() {
                     <Link to="/visualizarPerfil" className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                         PERFIL
                     </Link>
-                    <Link to="/mensagens" className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                    <Link to="/mensagemDireta" className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                         ENVIAR MENSAGEM
                     </Link>
                 </div>
