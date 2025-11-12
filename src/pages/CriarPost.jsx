@@ -1,6 +1,6 @@
 function CriarPost() {
     return (
-        <div></div>
+        <div>CRIAÇÃO DE POST</div>
     )
 }
 
