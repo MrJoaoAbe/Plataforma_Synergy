@@ -9,6 +9,12 @@ function MeuPerfil() {
 
     const [ativado, setAtivado] = useState(false);
 
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+
+    function handleClick() {
+        localStorage.removeItem("UsuarioLogado");
+    }
+
 
     return (
         <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
@@ -112,9 +118,9 @@ function MeuPerfil() {
                         <Link to="/dashboard" className="font-semibold bg-white p-5 py-2 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             VISUALIZAR DASHBOARD
                         </Link>
-                        <button className="font-semibold bg-white px-6 py-2 rounded-2xl text-[#ff0000] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ff0000] hover:text-white transition w-fit">
+                        <Link to='/' onClick={handleClick} className="font-semibold bg-white px-6 py-2 rounded-2xl text-[#ff0000] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ff0000] hover:text-white transition w-fit">
                             SAIR
-                        </button>
+                        </Link>
 
                     </div>
                 </div>
