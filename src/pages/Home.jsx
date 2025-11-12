@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import CardPostagens from "../components/CardPostagens"
 
 function Home() {
     return (
@@ -10,8 +11,9 @@ function Home() {
                 <Link to="/criarPost" className="bg-[#859F74] px-6 py-2 rounded-2xl text-white">
                     CRIAR POST
                 </Link>
-
             </div>
+
+            <CardPostagens />
 
 
         </div>
