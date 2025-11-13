@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Login() {
+
+    const API = import.meta.env.VITE_FUNCIONARIOS_API
+    const usuarios = 'usuarios'
 
     const navigate = useNavigate()
     const [email, setEmail] = useState("");
@@ -13,23 +17,29 @@ function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (senha === '' || email === '') {
+        if (!email || !senha) {
             alert("Preencha todos os campos");
-        } else {
-            const usuarioEncontrado = usuariosExistentes.find(
-                (u) => u.email === email && u.senha === senha
-            );
-
-            if (!usuarioEncontrado) {
-                alert("Senha ou Email estão errados");
-            } else {
-                alert(`Bem vindo ${usuarioEncontrado.nome}`);
-
-                localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioEncontrado));
-                navigate("/")
-            }
+            return;
         }
+
+        fetch(`${API}${usuarios}`)
+            .then(res => res.json())
+            .then(data => {
+                const usuarioEncontrado = data.find(
+                    u => u.email === email && u.senha === senha
+                );
+
+                if (!usuarioEncontrado) {
+                    alert("Senha ou Email estão errados");
+                } else {
+                    alert(`Bem-vindo ${usuarioEncontrado.nome}`);
+                    localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioEncontrado));
+                    navigate("/");
+                }
+            })
+            .catch(err => console.error("Erro ao buscar usuários:", err));
     }
+
 
     return (
         <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">

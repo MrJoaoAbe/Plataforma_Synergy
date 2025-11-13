@@ -3,7 +3,7 @@ import { Link, Links } from "react-router-dom"
 
 function MiniPerfil({ foto, nome, avaliacoes, seguidores, posts, area, localizacao }) {
     return (
-        <div className="bg-[#EDEBEB] h-130 rounded-4xl shadow-2xl flex flex-col items-center w-90 border-4 border-[#859F74] p-10 gap-5">
+        <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col items-center w-90 border-4 border-[#859F74] p-10 gap-5">
             <img src={foto} alt="" className="w-30 rounded-full border-4 border-white" />
             <h1 className="font-extralight text-4xl text-[#859F74]">{nome}</h1>
 
