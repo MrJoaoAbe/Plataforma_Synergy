@@ -1,25 +1,29 @@
 import FotoExemplo from "../assets/Example.jpg"
 import { Link } from "react-router-dom"
+import profileSemFoto from '../assets/profileSemFoto.png'
 
-function CardFuncionario() {
+function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habilidade3, localizacao, area }) {
     return (
         <div>
-            <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 m-20 shadow-2xl">
+            <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 m-20 mb-0 shadow-2xl">
                 <div className="flex flex-row gap-5">
-                    <img src={FotoExemplo} alt="Usuario1" className="w-25 rounded-full" />
+                    <img src={foto === null ? profileSemFoto : foto} className="w-25 rounded-full" />
 
                     <div className="flex flex-col text-[#859F74]">
-                        <p className="text-2xl">JOÃO ABE</p>
+                        <p className="text-2xl">{nome}</p>
                         <div className="flex flex-row gap-5">
-                            <p className="text-2xl">Engenheiro de Software</p>
-                            <p className="text-2xl">São Paulo</p>
+                            <p className="text-2xl">{area}</p>
+                            <p className="text-2xl">{localizacao}</p>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row gap-2 ml-20">
-                    <p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">PYTHON</p>
-                    <p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">SQL</p>
-                    <p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">REACT</p>
+                <div className="flex flex-row justify-center items-center gap-2 h-6 ml-20 mt-2">
+                    <p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">{habilidade1}</p>
+                    <p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">{habilidade2}</p>
+                    {habilidade3 &&
+                        (<p className="bg-[#859F74] text-white text-md p-1 px-7 rounded-full">{habilidade3}</p>)
+                    }
+
                 </div>
 
                 <div className="flex flex-row items-center gap-4 mt-5">

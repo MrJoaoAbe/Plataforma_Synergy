@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 function Cadastro() {
 
+    const API = import.meta.env.VITE_FUNCIONARIOS_API
+    const usuarios = 'usuarios'
+
     const navigate = useNavigate()
 
     const [nome, setNome] = useState("");
@@ -41,6 +44,7 @@ function Cadastro() {
             alert("A senhas precisam ser iguais")
         }
         else {
+
             const novoUsuario = {
                 nome: nome,
                 email: email,
@@ -81,15 +85,40 @@ function Cadastro() {
                 postagens: [],
             };
 
-            const usuariosExistentes = JSON.parse(localStorage.getItem("Usuarios")) || [];
-            usuariosExistentes.push(novoUsuario);
+            fetch(`${API}${usuarios}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(novoUsuario),
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error("Erro ao cadastrar usuário");
+                    }
+                    return res.json(); // ✅ Retorna o corpo da resposta
+                })
+                .then(data => {
+                    console.log("Usuário craido:", data);
+                    alert(`Usuário ${data.nome} foi cadastrado com sucesso!`)
+                    localStorage.setItem("UsuarioLogado", JSON.stringify(data));
+                    alert(`Bem vindo ${nome}`);
+                    navigate("/");
+                })
+                .catch((err) => {
+                    console.error(err);
+                    alert("Erro ao cadastrar usuário. Tente novamente.");
+                });
 
-            localStorage.setItem("Usuarios", JSON.stringify(usuariosExistentes));
-            localStorage.setItem("UsuarioLogado", JSON.stringify(novoUsuario));
+            // const usuariosExistentes = JSON.parse(localStorage.getItem("Usuarios")) || [];
+            // usuariosExistentes.push(novoUsuario);
 
-            alert("Usuário Criado");
-            alert(`Bem vindo ${nome}`);
-            navigate("/");
+            // localStorage.setItem("Usuarios", JSON.stringify(usuariosExistentes));
+            // localStorage.setItem("UsuarioLogado", JSON.stringify(novoUsuario));
+
+            // alert("Usuário Criado");
+            // alert(`Bem vindo ${nome}`);
+            // navigate("/");
 
         }
     }
