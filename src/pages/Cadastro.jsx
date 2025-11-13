@@ -96,7 +96,7 @@ function Cadastro() {
                     if (!res.ok) {
                         throw new Error("Erro ao cadastrar usuário");
                     }
-                    return res.json(); // ✅ Retorna o corpo da resposta
+                    return res.json();
                 })
                 .then(data => {
                     console.log("Usuário craido:", data);
@@ -109,16 +109,6 @@ function Cadastro() {
                     console.error(err);
                     alert("Erro ao cadastrar usuário. Tente novamente.");
                 });
-
-            // const usuariosExistentes = JSON.parse(localStorage.getItem("Usuarios")) || [];
-            // usuariosExistentes.push(novoUsuario);
-
-            // localStorage.setItem("Usuarios", JSON.stringify(usuariosExistentes));
-            // localStorage.setItem("UsuarioLogado", JSON.stringify(novoUsuario));
-
-            // alert("Usuário Criado");
-            // alert(`Bem vindo ${nome}`);
-            // navigate("/");
 
         }
     }
