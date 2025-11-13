@@ -92,7 +92,7 @@ function MeuPerfil() {
                                 <div className="flex flex-row gap-2">
                                     <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[0]}</p>
                                     <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[1]}</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[2]}</p>
+                                    {usuarioLogado.soft_skills[2] && <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.soft_skills[2]}</p>}
                                 </div>
 
                             </div>
@@ -107,7 +107,7 @@ function MeuPerfil() {
                                 <div className="flex flex-row gap-2">
                                     <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[0]}</p>
                                     <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[1]}</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[2]}</p>
+                                    {usuarioLogado.habilidades[2] && <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">{usuarioLogado === null ? '' : usuarioLogado.habilidades[2]}</p>}
                                 </div>
 
                             </div>
