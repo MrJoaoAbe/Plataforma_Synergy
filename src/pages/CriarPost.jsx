@@ -26,41 +26,50 @@ function Home() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        const novoPost = {
-            autor: usuarioLogado.nome,
-            foto_autor: usuarioLogado.foto,
-            titulo: titulo,
-            mensagem: mensagem,
-            imagem: imagem,
+        if (!usuarioLogado) {
+            alert("Voce precisa estar logado para fazer uma postagem")
+            navigate('/login')
+        }
+        else {
+
+            const novoPost = {
+                autor: usuarioLogado.nome,
+                foto_autor: usuarioLogado.foto,
+                titulo: titulo,
+                mensagem: mensagem,
+                imagem: imagem,
+            }
+
+            fetch(`${API}${usuarios}/${usuarioLogado.id}`)
+                .then(res => res.json())
+                .then(usuario => {
+
+                    const usuarioAtualizado = {
+                        ...usuario,
+                        postagens: [...(usuario.postagens || []), novoPost]
+                    };
+
+
+                    return fetch(`${API}${usuarios}/${usuarioLogado.id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(usuarioAtualizado),
+                    });
+                })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Erro ao atualizar o usuário");
+                    }
+                    alert("Post criado com sucesso!");
+                })
+                .catch(err => console.error("Erro ao criar post:", err));
+
+            navigate('/')
         }
 
-        fetch(`${API}${usuarios}/${usuarioLogado.id}`)
-            .then(res => res.json())
-            .then(usuario => {
 
-                const usuarioAtualizado = {
-                    ...usuario,
-                    postagens: [...(usuario.postagens || []), novoPost]
-                };
-
-
-                return fetch(`${API}${usuarios}/${usuarioLogado.id}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(usuarioAtualizado),
-                });
-            })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error("Erro ao atualizar o usuário");
-                }
-                alert("Post criado com sucesso!");
-            })
-            .catch(err => console.error("Erro ao criar post:", err));
-
-        navigate('/')
     }
 
     return (
