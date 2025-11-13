@@ -1,116 +1,262 @@
-import { Link } from "react-router-dom"
-import FotoExemplo from "../assets/Example.jpg"
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function VisualizarPerfil() {
+    const navigate = useNavigate()
+
+    const API = import.meta.env.VITE_FUNCIONARIOS_API;
+    const usuarios = "usuarios/";
+    const { id } = useParams();
+
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+
+    const [usuario, setUsuario] = useState(null);
+    const [carregando, setCarregando] = useState(true);
+
+    useEffect(() => {
+        fetch(`${API}${usuarios}${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setUsuario(data);
+                setCarregando(false);
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar usuário:", err);
+                setCarregando(false);
+            });
+    }, [API, id]);
+
+    if (carregando) {
+        return (
+            <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center text-[#859F74] text-2xl">
+                Carregando perfil...
+            </div>
+        );
+    }
+
+    if (!usuario) {
+        return (
+            <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center text-red-500 text-2xl">
+                Usuário não encontrado.
+            </div>
+        );
+    }
+
+    function seguir() {
+        const listaAtual = usuarioLogadoLocalStorage.seguindo || [];
+
+        const novaListaSeguindo = listaAtual.includes(id)
+            ? listaAtual
+            : [...listaAtual, id];
+
+        const usuarioAtualizado = {
+            ...usuarioLogadoLocalStorage,
+            seguindo: novaListaSeguindo,
+        };
+
+        localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAtualizado));
+
+        fetch(`${API}${usuarios}/${usuarioLogadoLocalStorage.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuarioAtualizado),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Usuário atualizado:", data);
+                window.location.reload();
+                alert(`Você começou a Seguir ${usuario.nome}`)
+                navigate('/')
+            })
+
+            .catch((err) => console.error("Erro ao atualizar usuário:", err));
+
+        if (onComecarSeguir) onComecarSeguir(id);
+    }
 
     return (
         <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
-            <div className="w-350  bg-white rounded-4xl shadow-2xl flex flex-col">
-                <div className="flex juflex flex-row items-center justify-between px-10stify-around">
-                    <h1 className="font-extralight text-4xl text-[#859F74] p-20 pb-0 flex items-center ml-10">EXIBINDO</h1>
+            <div className="w-350 bg-white rounded-4xl shadow-2xl flex flex-col">
+                <div className="flex flex-row items-center justify-between px-10">
+                    <h1 className="font-extralight text-4xl text-[#859F74] p-20 pb-0 flex items-center ml-10">
+                        EXIBINDO
+                    </h1>
                 </div>
 
-
                 <div className="grid grid-cols-3 gap-6 items-center p-20 px-40 text-[#859F74]">
-                    <img src={FotoExemplo} alt="MinhaFoto" className="w-60 rounded-4xl border-4 border-white shadow-xl" />
+                    <img
+                        src={usuario?.foto}
+                        alt="Foto do usuário"
+                        className="w-60 rounded-4xl border-4 border-white shadow-xl"
+                    />
 
+                    {/* INFORMAÇÕES PRINCIPAIS */}
                     <div className="flex flex-col space-y-2 gap-4 text-[#859F74]">
                         <div className="flex gap-2 items-center text-4xl font-light">
-                            <p>JOÃO ABE</p>
-                            <p>20</p>
+                            <p>{usuario?.nome}</p>
+                            <p>{usuario?.idade}</p>
                         </div>
-                        <p className="text-2xl">Engenheiro de Software</p>
-                        <p className="text-2xl">São Paulo</p>
-                        <p className="text-2xl">Desenvolvedor</p>
+                        <p className="text-2xl">{usuario?.cargo}</p>
+                        <p className="text-2xl">{usuario?.area}</p>
+                        <p className="text-2xl">{usuario?.localizacao}</p>
                     </div>
 
+                    {/* NÚMEROS */}
                     <div className="flex justify-around text-[#859F74] text-center">
                         <div>
-                            <p className="font-bold text-3xl">10</p>
+                            <p className="font-bold text-3xl">{usuario?.avaliacoes}</p>
                             <p className="text-sm">Estrelas</p>
                         </div>
                         <div>
-                            <p className="font-bold text-3xl">230</p>
+                            <p className="font-bold text-3xl">
+                                {usuario?.seguidores?.length ?? 0}
+                            </p>
                             <p className="text-sm">Seguindo</p>
                         </div>
                         <div>
-                            <p className="font-bold text-3xl">5</p>
+                            <p className="font-bold text-3xl">
+                                {usuario?.postagens?.length ?? 0}
+                            </p>
                             <p className="text-sm">Posts</p>
                         </div>
                     </div>
 
+                    {/* RESUMO */}
                     <p className="mt-6 col-start-1 col-span-2 text-[#859F74] text-center text-lg">
-                        Engenheiro de Software | Transformando ideias em código e código em valor. Curioso por natureza, sempre em busca de novos desafios.
+                        {usuario?.resumo}
                     </p>
 
+                    {/* EXPERIÊNCIAS / FORMAÇÃO / IDIOMAS */}
                     <div className="flex flex-col col-start-3 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-1">
                                 <p className="text-xl font-semibold">EXPERIÊNCIAS</p>
-                                <p className="text-xl">2 anos na Stratesys Tecnologia</p>
+                                <div className="text-xl space-y-2">
+                                    {Array.isArray(usuario?.experiencias)
+                                        ? usuario.experiencias.map((exp, i) => (
+                                            <div
+                                                key={i}
+                                                className="border-b border-[#859F74]/30 pb-2"
+                                            >
+                                                <p>
+                                                    <strong>Empresa:</strong> {exp.empresa}
+                                                </p>
+                                                <p>
+                                                    <strong>Cargo:</strong> {exp.cargo}
+                                                </p>
+                                                <p>
+                                                    <strong>Período:</strong> {exp.inicio} –{" "}
+                                                    {exp.fim}
+                                                </p>
+                                                <p>
+                                                    <strong>Descrição:</strong> {exp.descricao}
+                                                </p>
+                                            </div>
+                                        ))
+                                        : usuario?.experiencias && (
+                                            <div>
+                                                <p>
+                                                    <strong>Empresa:</strong>{" "}
+                                                    {usuario.experiencias.empresa}
+                                                </p>
+                                                <p>
+                                                    <strong>Cargo:</strong>{" "}
+                                                    {usuario.experiencias.cargo}
+                                                </p>
+                                                <p>
+                                                    <strong>Período:</strong>{" "}
+                                                    {usuario.experiencias.inicio} –{" "}
+                                                    {usuario.experiencias.fim}
+                                                </p>
+                                                <p>
+                                                    <strong>Descrição:</strong>{" "}
+                                                    {usuario.experiencias.descricao}
+                                                </p>
+                                            </div>
+                                        )}
+                                </div>
                             </div>
 
                             <div className="flex flex-col gap-1">
-                                <p className="text-xl font-semibold">FORMAÇÃO</p>
-                                <p className="text-xl">FIAP</p>
+                                <p className="text-xl font-semibold">
+                                    {usuario?.formacao?.[0]?.instituicao}
+                                </p>
+                                <p className="text-xl">
+                                    {usuario?.formacao?.[0]?.curso || "FIAP"}
+                                </p>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <p className="text-xl font-semibold">IDIOMAS</p>
-                            <p className="text-xl">Inglês</p>
+                            <p className="text-xl font-semibold">
+                                {usuario?.idiomas?.[0]?.idioma || "Idioma"}
+                            </p>
+                            <p className="text-xl">
+                                {usuario?.idiomas?.[0]?.nivel || "Inglês"}
+                            </p>
                         </div>
-
-
                     </div>
 
+                    {/* SOFT SKILLS */}
                     <div className="flex flex-col col-start-1 col-span-2 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-4">
                                 <p className="text-xl font-semibold">SOFTSKILLS</p>
-                                <div className="flex flex-row gap-2">
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Trabalho em equipe</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Empatia</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full">Comunicativo</p>
+                                <div className="flex flex-row gap-2 flex-wrap">
+                                    {usuario?.soft_skills?.map((skill, i) => (
+                                        <p
+                                            key={i}
+                                            className="bg-[#859F74] text-white text-md p-1 px-2 rounded-full"
+                                        >
+                                            {skill}
+                                        </p>
+                                    ))}
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
+
+                    {/* HARD SKILLS */}
                     <div className="flex flex-col col-start-1 col-span-2 gap-5">
                         <div className="flex flex-row gap-4">
                             <div className="flex flex-col gap-4">
                                 <p className="text-xl font-semibold">HABILIDADES</p>
-                                <div className="flex flex-row gap-2">
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">PYTHON</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">SQL</p>
-                                    <p className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full">REACT</p>
+                                <div className="flex flex-row gap-2 flex-wrap">
+                                    {usuario?.hard_skills?.map((skill, i) => (
+                                        <p
+                                            key={i}
+                                            className="bg-[#859F74] text-white text-md p-1 px-3 rounded-full"
+                                        >
+                                            {skill}
+                                        </p>
+                                    ))}
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
+                    {/* BOTÕES */}
                     <div className="flex flex-col col-start-3 items-center gap-4">
-                        <button className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <button onClick={seguir} className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                             SEGUIR
                         </button>
-                        <button className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <button className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                             ESTRELAR
                         </button>
-                        <Link to="/mensagemDireta" className=" bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <Link
+                            to="/mensagemDireta"
+                            className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition"
+                        >
                             ENVIAR MENSAGEM
                         </Link>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
-    )
+    );
 }
-export default VisualizarPerfil
+
+export default VisualizarPerfil;
