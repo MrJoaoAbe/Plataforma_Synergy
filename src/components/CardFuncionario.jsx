@@ -27,7 +27,7 @@ function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habili
                 </div>
 
                 <div className="flex flex-row items-center gap-4 mt-5">
-                    <Link to="/visualizarPerfil" className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                    <Link to={`/visualizarPerfil/${id}`} className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                         PERFIL
                     </Link>
                     <Link to="/mensagemDireta" className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
