@@ -2,13 +2,14 @@ import { Link } from "react-router-dom"
 import CardPostagens from "../components/CardPostagens"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { usePostagens } from "../../PostagensContext"
 
 function Home() {
 
     const API = import.meta.env.VITE_FUNCIONARIOS_API
     const usuarios = 'usuarios'
 
-    const [postagens, setPostagens] = useState([])
+    const { postagens, setPostagens, postagensFiltradas, setPostagensFiltradas } = usePostagens()
 
     useEffect(() => {
         fetch(`${API}${usuarios}`)
@@ -18,6 +19,7 @@ function Home() {
                     .map(user => user.postagens || [])
                     .flat();
                 setPostagens([...todasPostagens].reverse())
+                setPostagensFiltradas([...todasPostagens].reverse())
             })
 
     }, [])
@@ -33,7 +35,7 @@ function Home() {
                 </Link>
             </div>
 
-            {postagens
+            {postagensFiltradas
                 .map(post => (
                     < CardPostagens
                         key={post.id}
