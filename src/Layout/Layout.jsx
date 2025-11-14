@@ -15,37 +15,78 @@ function Layout() {
     const location = useLocation();
 
     return (
-        <div className="min-h-screen flex flex-col">
-            <Navbar />
+        <div>
+            {usuarioLogado.darkMode === true ?
+                // Modo Claro
+                <div className="min-h-screen flex flex-col">
+                    <Navbar />
 
-            <div className="flex flex-1 px-20 py-10 gap-10 bg-[#DFDFDF]">
-                <div className="w-1/4">
-                    {usuarioLogado && (
-                        <MiniPerfil
-                            foto={usuarioLogado.foto}
-                            nome={usuarioLogado.nome}
-                            avaliacoes={usuarioLogado.avaliacoes}
-                            seguidores={Array.isArray(usuarioLogado.seguidores) ? usuarioLogado.seguidores.length : 0}
-                            posts={usuarioLogado.postagens?.length || 0}
-                            area={usuarioLogado.area}
-                            localizacao={usuarioLogado.localizacao}
-                        />
-                    )}
+                    <div className="flex flex-1 px-20 py-10 gap-10 bg-[#DFDFDF]">
+                        <div className="w-1/4">
+                            {usuarioLogado && (
+                                <MiniPerfil
+                                    foto={usuarioLogado.foto}
+                                    nome={usuarioLogado.nome}
+                                    avaliacoes={usuarioLogado.avaliacoes}
+                                    seguidores={Array.isArray(usuarioLogado.seguidores) ? usuarioLogado.seguidores.length : 0}
+                                    posts={usuarioLogado.postagens?.length || 0}
+                                    area={usuarioLogado.area}
+                                    localizacao={usuarioLogado.localizacao}
+                                />
+                            )}
 
+                        </div>
+
+                        <div className="flex-1">
+                            <Outlet />
+                        </div>
+
+                        <div className="w-1/4">
+                            <MelhoresProfissionais />
+                            {location.pathname === '/funcionarios' && <FiltroAvancado />}
+                            {location.pathname === '/' && <FiltroPostagens />}
+                        </div>
+                    </div>
+
+                    <Footer />
                 </div>
+                :
+                // Modo Escuro
+                <div className="min-h-screen flex flex-col">
+                    <Navbar />
 
-                <div className="flex-1">
-                    <Outlet />
+                    <div className="flex flex-1 px-20 py-10 gap-10 bg-[#111411]">
+                        <div className="w-1/4">
+                            {usuarioLogado && (
+                                <MiniPerfil
+                                    foto={usuarioLogado.foto}
+                                    nome={usuarioLogado.nome}
+                                    avaliacoes={usuarioLogado.avaliacoes}
+                                    seguidores={Array.isArray(usuarioLogado.seguidores) ? usuarioLogado.seguidores.length : 0}
+                                    posts={usuarioLogado.postagens?.length || 0}
+                                    area={usuarioLogado.area}
+                                    localizacao={usuarioLogado.localizacao}
+                                />
+                            )}
+
+                        </div>
+
+                        <div className="flex-1">
+                            <Outlet />
+                        </div>
+
+                        <div className="w-1/4">
+                            <MelhoresProfissionais />
+                            {location.pathname === '/funcionarios' && <FiltroAvancado />}
+                            {location.pathname === '/' && <FiltroPostagens />}
+                        </div>
+                    </div>
+
+                    <Footer />
                 </div>
+            }
 
-                <div className="w-1/4">
-                    <MelhoresProfissionais />
-                    {location.pathname === '/funcionarios' && <FiltroAvancado />}
-                    {location.pathname === '/' && <FiltroPostagens />}
-                </div>
-            </div>
 
-            <Footer />
         </div>
     )
 }

@@ -22,6 +22,8 @@ function MeuPerfil() {
         };
 
         localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAtualizado))
+
+        window.dispatchEvent(new Event("darkmode-change"));
     }
 
     return (

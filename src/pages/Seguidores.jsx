@@ -27,20 +27,41 @@ function Seguidores() {
     }, [API]);
 
     return (
-        <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col">
-            <h1 className="font-extralight text-4xl text-[#859F74] p-15 pb-0 flex items-center ml-10">
-                SEGUINDO
-            </h1>
-            {usuariosSeguidos.map((seguindo) => (
-                <CardSeguindo
-                    key={seguindo.id}
-                    id={seguindo.id}
-                    nome={seguindo.nome}
-                    foto={seguindo.foto}
-                    area={seguindo.area}
-                    localizacao={seguindo.localizacao}
-                />
-            ))}
+        <div>
+            {usuarioLogadoLocalStorage.darkMode === true ?
+                //modo claro
+                <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col">
+                    <h1 className="font-extralight text-4xl text-[#859F74] p-15 pb-0 flex items-center ml-10">
+                        SEGUINDO
+                    </h1>
+                    {usuariosSeguidos.map((seguindo) => (
+                        <CardSeguindo
+                            key={seguindo.id}
+                            id={seguindo.id}
+                            nome={seguindo.nome}
+                            foto={seguindo.foto}
+                            area={seguindo.area}
+                            localizacao={seguindo.localizacao}
+                        />
+                    ))}
+                </div> :
+                //modo escuro
+                <div className="bg-[#1A1D1A]  rounded-4xl shadow-2xl flex flex-col">
+                    <h1 className="font-extralight text-4xl text-[#ffffff] p-15 pb-0 flex items-center ml-10">
+                        SEGUINDO
+                    </h1>
+                    {usuariosSeguidos.map((seguindo) => (
+                        <CardSeguindo
+                            key={seguindo.id}
+                            id={seguindo.id}
+                            nome={seguindo.nome}
+                            foto={seguindo.foto}
+                            area={seguindo.area}
+                            localizacao={seguindo.localizacao}
+                        />
+                    ))}
+                </div>}
+
         </div>
     );
 }
