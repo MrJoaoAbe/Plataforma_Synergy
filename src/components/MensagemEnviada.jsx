@@ -24,6 +24,7 @@ function MensagemEnviada({ idOutroUsuario, atualizarMensagens }) {
                     msg.autor === usuarioLogadoLocalStorage.id.toString() &&
                     msg.destino === idOutroUsuario.toString()
                 );
+                filtradas.sort((a, b) => new Date(a.data_envio) - new Date(b.data_envio));
 
                 setMinhasMensagens(filtradas);
                 setCarregando(false);

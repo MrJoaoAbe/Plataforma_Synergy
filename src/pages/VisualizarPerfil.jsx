@@ -144,7 +144,7 @@ function VisualizarPerfil() {
 
 
     return (
-        <dir>
+        <div>
             {usuarioLogadoLocalStorage.darkMode === false ?
                 //modo clarp
                 <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
@@ -320,7 +320,7 @@ function VisualizarPerfil() {
                                     ESTRELAR
                                 </button>
                                 <Link
-                                    to="/mensagemDireta"
+                                    to={`/mensagemDireta/${id}`}
                                     className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition"
                                 >
                                     ENVIAR MENSAGEM
@@ -504,7 +504,7 @@ function VisualizarPerfil() {
                                     ESTRELAR
                                 </button>
                                 <Link
-                                    to="/mensagemDireta"
+                                    to={`/mensagemDireta/${id}`}
                                     className="bg-[#859F74] py-2 w-70 rounded-2xl text-[#ffffff] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition"
                                 >
                                     ENVIAR MENSAGEM
@@ -514,7 +514,7 @@ function VisualizarPerfil() {
                     </div>
                 </div>}
 
-        </dir>
+        </div>
     );
 }
 

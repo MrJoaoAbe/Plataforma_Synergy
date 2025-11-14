@@ -65,6 +65,7 @@ function Home() {
                         throw new Error("Erro ao atualizar o usuário");
                     }
                     alert("Post criado com sucesso!");
+                    window.location.reload();
                 })
                 .catch(err => console.error("Erro ao criar post:", err));
 
