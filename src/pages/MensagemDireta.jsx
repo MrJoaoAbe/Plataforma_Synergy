@@ -10,9 +10,11 @@ function MensagemDireta() {
 
     const API = import.meta.env.VITE_FUNCIONARIOS_API;
     const usuarios = "usuarios/";
+    const mensagens = "mensagens";
     const { id } = useParams();
 
-    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const darkModeUsuario = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
         darkMode: false
     };
 
@@ -27,7 +29,50 @@ function MensagemDireta() {
             .catch((err) => {
                 console.error("Erro ao buscar usuário:", err);
             });
-    }, [API, id]);
+    }, [id]);
+
+    const [conteudo, setConteudo] = useState('')
+
+    const [atualizarMensagens, setAtualizarMensagens] = useState(false);
+
+    function enviarMensagem(e) {
+        e.preventDefault();
+        const agora = new Date()
+
+        if (!conteudo) {
+            return
+        }
+        else {
+            const novaMensagem = {
+                autor: usuarioLogadoLocalStorage.id,
+                destino: id,
+                conteudo: conteudo,
+                data_envio: agora.toISOString(),
+                lida: false
+            }
+
+            fetch(`${API}${mensagens}`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(novaMensagem),
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error("Erro ao enviar mensagem");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    console.log("mensagem enviada");
+                    setConteudo('');
+                    setAtualizarMensagens(prev => !prev)
+                })
+                .catch(err => console.error(err));
+        }
+
+    }
 
     return (
         <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col relative">
@@ -49,15 +94,18 @@ function MensagemDireta() {
             <MensagemRecebida
                 idOutroUsuario={id}
                 fotoOutroUsuario={outroUsuario.foto}
+                atualizarMensagens={atualizarMensagens}
             />
             <MensagemEnviada
-                idOutroUsuario={id} />
+                idOutroUsuario={id}
+                atualizarMensagens={atualizarMensagens} />
 
             {/* BARRA DE MENSAGEM */}
             <div className="absolute bottom-10 left-0 right-0 px-10">
-                <form className="flex items-center gap-4">
-                    <input type="text" className="flex-1 border-2 border-[#859F74] h-12 rounded-full shadow-md px-5 placeholder:text-[#859F74] placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-[#859F74] transition" placeholder="Digite uma mensagem..." />
-                    <button className="bg-[#859F74] w-12 h-12 rounded-full flex items-center justify-center text-white shadow-md hover:bg-[#6f865f] transition" aria-label="Enviar mensagem">
+                <form onSubmit={enviarMensagem} className="flex items-center gap-4">
+                    <input type="text" className="flex-1 border-2 border-[#859F74] h-12 rounded-full shadow-md px-5 placeholder:text-[#859F74] placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-[#859F74] transition" placeholder="Digite uma mensagem..."
+                        onChange={(e) => setConteudo(e.target.value)} value={conteudo} />
+                    <button type="submit" className="bg-[#859F74] w-12 h-12 rounded-full flex items-center justify-center text-white shadow-md hover:bg-[#6f865f] transition" aria-label="Enviar mensagem">
                         <FontAwesomeIcon icon={faShare} className="text-white text-xl" />
                     </button>
                 </form>

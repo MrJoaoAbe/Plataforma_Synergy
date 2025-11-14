@@ -1,7 +1,7 @@
 import FotoExemplo from "../assets/Example.jpg"
 import { useState, useEffect } from "react";
 
-function MensagemEnviada({ idOutroUsuario }) {
+function MensagemEnviada({ idOutroUsuario, atualizarMensagens }) {
 
     const API = import.meta.env.VITE_FUNCIONARIOS_API;
     const mensagens = "mensagens/";
@@ -30,7 +30,7 @@ function MensagemEnviada({ idOutroUsuario }) {
             })
             .catch(err => console.error("Erro ao buscar mensagens:", err));
 
-    }, [API, idOutroUsuario]);
+    }, [API, idOutroUsuario, atualizarMensagens]);
 
 
 
