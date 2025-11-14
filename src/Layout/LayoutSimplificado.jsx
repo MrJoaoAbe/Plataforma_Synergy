@@ -7,7 +7,9 @@ import { useEffect, useState } from "react"
 function Layout() {
 
     const [usuarioLogado, setUsuarioLogado] = useState(
-        JSON.parse(localStorage.getItem("UsuarioLogado"))
+        JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+            darkMode: false
+        }
     );
 
     useEffect(() => {
@@ -24,7 +26,7 @@ function Layout() {
         <div>
             <Navbar />
 
-            {usuarioLogado?.darkMode === true ? (
+            {usuarioLogado?.darkMode === false ? (
                 <div className="px-20 py-10 gap-10 bg-[#DFDFDF]">
                     <Outlet />
                 </div>

@@ -14,7 +14,9 @@ function Home() {
 
     const [criarPost, setCriarPost] = useState([])
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
 
     const [titulo, setTitulo] = useState('')
@@ -74,7 +76,7 @@ function Home() {
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div className="bg-[#EDEBEB] pb-10 rounded-4xl shadow-2xl flex flex-col">
                     <div className="flex flex-row items-center justify-between px-10">

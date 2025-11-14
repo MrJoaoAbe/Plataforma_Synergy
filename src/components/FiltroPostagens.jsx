@@ -3,7 +3,9 @@ import { usePostagens } from "../../PostagensContext";
 
 function FiltroPostagens() {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     const [filtrarAutor, setFiltrarAutor] = useState('');
     const [filtrarTitulo, setFiltrarTitulo] = useState('');
@@ -21,7 +23,7 @@ function FiltroPostagens() {
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col w-100 border-4 border-[#859F74] p-10 gap-5 mt-10 text-[#859F74]">
                     <p className="font-bold pb-5">FILTRAR POSTAGENS</p>

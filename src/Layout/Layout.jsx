@@ -10,13 +10,16 @@ import FiltroPostagens from "../components/FiltroPostagens"
 
 function Layout() {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const darkModeUsuario = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     const location = useLocation();
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {darkModeUsuario.darkMode === false ?
                 // Modo Claro
                 <div className="min-h-screen flex flex-col">
                     <Navbar />

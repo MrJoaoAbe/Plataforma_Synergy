@@ -7,7 +7,9 @@ function Seguidores() {
 
     const [usuariosSeguidos, setUsuariosSeguidos] = useState([]);
 
-    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     useEffect(() => {
         fetch(`${API}${usuarios}`)
@@ -28,7 +30,7 @@ function Seguidores() {
 
     return (
         <div>
-            {usuarioLogadoLocalStorage.darkMode === true ?
+            {usuarioLogadoLocalStorage.darkMode === false ?
                 //modo claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col">
                     <h1 className="font-extralight text-4xl text-[#859F74] p-15 pb-0 flex items-center ml-10">
