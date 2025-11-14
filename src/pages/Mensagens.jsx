@@ -46,20 +46,42 @@ function Mensagens() {
         : null;
 
     return (
-        <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
-            <h1 className="font-extralight text-4xl text-[#859F74] p-15 flex items-center ml-10">HISTÓRICO DE MENSAGENS</h1>
+        <div>
+            {usuarioLogado.darkMode === false ?
+                //modo claro
+                <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
+                    <h1 className="font-extralight text-4xl text-[#859F74] p-15 flex items-center ml-10">HISTÓRICO DE MENSAGENS</h1>
 
-            {ultimaMensagem && autorMensagem ? (
-                <CardMensagem
-                    conteudo={ultimaMensagem.conteudo}
-                    id={autorMensagem.id}
-                    nome={autorMensagem.nome}
-                    foto={autorMensagem.foto}
-                    horasAtras={horasAtras}
-                />
-            ) : (
-                <p className="ml-10 mt-5 text-gray-500">Nenhuma mensagem recebida.</p>
-            )}
+                    {ultimaMensagem && autorMensagem ? (
+                        <CardMensagem
+                            conteudo={ultimaMensagem.conteudo}
+                            id={autorMensagem.id}
+                            nome={autorMensagem.nome}
+                            foto={autorMensagem.foto}
+                            horasAtras={horasAtras}
+                        />
+                    ) : (
+                        <p className="ml-10 mt-5 text-gray-500">Nenhuma mensagem recebida.</p>
+                    )}
+                </div>
+                :
+                //modo escuro
+                <div className="bg-[#1A1D1A] min-h-screen rounded-4xl shadow-2xl flex flex-col">
+                    <h1 className="font-extralight text-4xl text-[#ffffff] p-15 flex items-center ml-10">HISTÓRICO DE MENSAGENS</h1>
+
+                    {ultimaMensagem && autorMensagem ? (
+                        <CardMensagem
+                            conteudo={ultimaMensagem.conteudo}
+                            id={autorMensagem.id}
+                            nome={autorMensagem.nome}
+                            foto={autorMensagem.foto}
+                            horasAtras={horasAtras}
+                        />
+                    ) : (
+                        <p className="ml-10 mt-5 text-white">Nenhuma mensagem recebida.</p>
+                    )}
+                </div>}
+
         </div>
     )
 }
