@@ -37,16 +37,13 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
             .catch((err) => console.error("Erro ao atualizar usuário:", err));
 
         if (onPararSeguir) onPararSeguir(id);
-
-
-
     }
 
 
 
     return (
         <div>
-            <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 m-20 shadow-2xl">
+            <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 mx-20 my-5 shadow-2xl">
                 <div className="flex flex-row gap-10">
                     <img src={foto} alt="Usuario1" className="w-25 rounded-full" />
 

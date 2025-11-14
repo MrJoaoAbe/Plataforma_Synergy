@@ -1,6 +1,7 @@
 import FotoExemplo from "../assets/Example.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 import { Link, Links } from "react-router-dom"
 import Ana from "../assets/ana.png"
@@ -8,31 +9,44 @@ import Celbit from "../assets/celbit.png"
 import Sergio from "../assets/Sergio.png"
 
 function MelhoresProfissionais() {
+
+    const API = import.meta.env.VITE_FUNCIONARIOS_API;
+    const usuarios = "usuarios";
+
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const [funcionario, setFuncionario] = useState([])
+
+    useEffect(() => {
+        fetch(`${API}${usuarios}`)
+            .then(res => res.json())
+            .then((data) => {
+                const maiores3 = data
+                    .sort((a, b) => b.avaliacoes - a.avaliacoes)
+                    .slice(0, 3)
+                setFuncionario(maiores3)
+            })
+            .catch((err) => {
+                console.error("Erro ao buscar usuário:", err);
+                setCarregando(false);
+
+            });
+    }, [])
+
     return (
-        <div className="bg-[#EDEBEB] h-70 rounded-4xl shadow-2xl flex flex-col items-center w-100 border-4 p-5 border-[#859F74] text-[#859F74]">
-            <p className="font-bold pb-5">Usuários melhores avaliados na sua área</p>
+        <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col items-center w-100 border-4 p-5 border-[#859F74] text-[#859F74]">
+            <p className="font-bold text-2xl pb-5">Melhores avaliados do site</p>
+
 
             <div className="flex flex-col gap-3">
-                <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Sergio} alt="" className="w-12 rounded-full" />
-                    <p className="text-2xl">Sergio Malandro</p>
-                    <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
-                    <p className="text-2xl">200</p>
-                </div>
 
-                <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Celbit} alt="" className="w-12 rounded-full" />
-                    <p className="text-2xl">Celbit</p>
-                    <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
-                    <p className="text-2xl">200</p>
-                </div>
-
-                <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
-                    <img src={Ana} alt="" className="w-12 rounded-full" />
-                    <p className="text-2xl">Ana Dev</p>
-                    <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
-                    <p className="text-2xl">200</p>
-                </div>
+                {funcionario.map((user) => (
+                    <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3">
+                        <img src={user.foto} alt="" className="w-12 rounded-full" />
+                        <p className="text-2xl">{user.nome}</p>
+                        <FontAwesomeIcon icon={faStar} style={{ color: "#859F74" }} className="text-xl" />
+                        <p className="text-2xl">{user.avaliacoes}</p>
+                    </div>
+                ))}
 
             </div>
         </div >

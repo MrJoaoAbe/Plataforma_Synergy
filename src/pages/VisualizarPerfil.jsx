@@ -14,6 +14,8 @@ function VisualizarPerfil() {
     const [usuario, setUsuario] = useState(null);
     const [carregando, setCarregando] = useState(true);
 
+    const estaSeguindo = usuarioLogadoLocalStorage.seguindo?.includes(id);
+
     useEffect(() => {
         fetch(`${API}${usuarios}${id}`)
             .then((res) => res.json())
@@ -55,6 +57,8 @@ function VisualizarPerfil() {
             seguindo: novaListaSeguindo,
         };
 
+
+
         localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAtualizado));
 
         fetch(`${API}${usuarios}/${usuarioLogadoLocalStorage.id}`, {
@@ -75,6 +79,36 @@ function VisualizarPerfil() {
             .catch((err) => console.error("Erro ao atualizar usuário:", err));
 
         if (onComecarSeguir) onComecarSeguir(id);
+    }
+
+    function pararSeguir() {
+        const novaListaSeguindo = usuarioLogadoLocalStorage.seguindo.filter(
+            (seguindoId) => seguindoId !== id
+        );
+
+        const usuarioAtualizado = {
+            ...usuarioLogadoLocalStorage,
+            seguindo: novaListaSeguindo,
+        };
+
+        localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAtualizado));
+
+        fetch(`${API}${usuarios}/${usuarioLogadoLocalStorage.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuarioAtualizado),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Usuário atualizado:", data);
+                window.location.reload();
+            })
+
+            .catch((err) => console.error("Erro ao atualizar usuário:", err));
+
+        if (onPararSeguir) onPararSeguir(id);
     }
 
     return (
@@ -240,9 +274,13 @@ function VisualizarPerfil() {
 
                     {/* BOTÕES */}
                     <div className="flex flex-col col-start-3 items-center gap-4">
-                        <button onClick={seguir} className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
-                            SEGUIR
-                        </button>
+                        {estaSeguindo ?
+                            <button onClick={pararSeguir} className="bg-white py-2 w-70 rounded-2xl text-[#ff0000] border-4 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ff0000] hover:text-white transition">
+                                DEIXAR DE SEGUIR
+                            </button> : <button onClick={seguir} className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
+                                SEGUIR
+                            </button>}
+
                         <button className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                             ESTRELAR
                         </button>
