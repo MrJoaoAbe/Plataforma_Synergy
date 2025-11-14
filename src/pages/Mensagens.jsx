@@ -52,7 +52,7 @@ function Mensagens() {
             {ultimaMensagem && autorMensagem ? (
                 <CardMensagem
                     conteudo={ultimaMensagem.conteudo}
-                    id={ultimaMensagem.id}
+                    id={autorMensagem.id}
                     nome={autorMensagem.nome}
                     foto={autorMensagem.foto}
                     horasAtras={horasAtras}
