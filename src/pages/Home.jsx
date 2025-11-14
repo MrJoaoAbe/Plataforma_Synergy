@@ -6,7 +6,9 @@ import { usePostagens } from "../../PostagensContext"
 
 function Home() {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     const API = import.meta.env.VITE_FUNCIONARIOS_API
     const usuarios = 'usuarios'
@@ -28,7 +30,7 @@ function Home() {
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
                     <div className="flex flex-row items-center justify-between px-10">

@@ -3,11 +3,13 @@ import { Link, Links } from "react-router-dom"
 
 function MiniPerfil({ foto, nome, avaliacoes, seguidores, posts, area, localizacao }) {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col items-center w-90 border-4 border-[#859F74] p-10 gap-5">
                     <img src={foto} alt="" className="w-30 rounded-full border-4 border-white" />

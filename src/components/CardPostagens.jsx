@@ -2,11 +2,13 @@ import FotoExemplo from "../assets/Example.jpg"
 
 function CardPostagens({ key, id, autor, foto, titulo, mensagem, imagem }) {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div>
                     <div className="flex flex-col items-start justify-start bg-white rounded-4xl p-5 mt-5 mx-10  shadow-2xl">

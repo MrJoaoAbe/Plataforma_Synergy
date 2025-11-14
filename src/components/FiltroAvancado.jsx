@@ -3,7 +3,9 @@ import { useFuncionarios } from "../../FuncionariosContext";
 
 function FiltroAvancado() {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     const [filtroNome, setFiltroNome] = useState('');
     const [filtroArea, setFiltroArea] = useState('');
@@ -26,7 +28,7 @@ function FiltroAvancado() {
 
     return (
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col w-100 border-4 border-[#859F74] p-10 gap-5 mt-10 text-[#859F74]">
                     <p className="font-bold pb-5">BUSCA AVANÇADA</p>

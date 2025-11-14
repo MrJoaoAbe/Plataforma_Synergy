@@ -9,7 +9,9 @@ function VisualizarPerfil() {
     const usuarios = "usuarios/";
     const { id } = useParams();
 
-    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };;
 
     const [usuario, setUsuario] = useState(null);
     const [carregando, setCarregando] = useState(true);
@@ -113,7 +115,7 @@ function VisualizarPerfil() {
 
     return (
         <dir>
-            {usuarioLogadoLocalStorage.darkMode === true ?
+            {usuarioLogadoLocalStorage.darkMode === false ?
                 //modo clarp
                 <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
                     <div className="w-350 bg-white rounded-4xl shadow-2xl flex flex-col">

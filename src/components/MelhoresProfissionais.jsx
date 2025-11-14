@@ -13,7 +13,9 @@ function MelhoresProfissionais() {
     const API = import.meta.env.VITE_FUNCIONARIOS_API;
     const usuarios = "usuarios";
 
-    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
     const [funcionario, setFuncionario] = useState([])
 
     useEffect(() => {
@@ -34,7 +36,7 @@ function MelhoresProfissionais() {
 
     return (
         <div>
-            {usuarioLogadoLocalStorage.darkMode === true ?
+            {usuarioLogadoLocalStorage.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col items-center w-100 border-4 p-5 border-[#859F74] text-[#859F74]">
                     <p className="font-bold text-2xl pb-5">Melhores avaliados do site</p>

@@ -4,12 +4,14 @@ import profileSemFoto from '../assets/profileSemFoto.png'
 
 function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habilidade3, localizacao, area }) {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     return (
 
         <div>
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 //modo claro
                 <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 m-20 mb-0 shadow-2xl">
                     <div className="flex flex-row gap-5">

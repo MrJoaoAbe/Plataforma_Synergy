@@ -7,7 +7,9 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
     const API = import.meta.env.VITE_FUNCIONARIOS_API;
     const usuarios = "usuarios";
 
-    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogadoLocalStorage = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     function handleClick() {
         const novaListaSeguindo = usuarioLogadoLocalStorage.seguindo.filter(
@@ -43,7 +45,7 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
 
     return (
         <div>
-            {usuarioLogadoLocalStorage.darkMode === true ?
+            {usuarioLogadoLocalStorage.darkMode === false ?
                 //modo claro
                 <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 mx-20 my-5 shadow-2xl">
                     <div className="flex flex-row gap-10">

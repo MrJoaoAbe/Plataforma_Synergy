@@ -7,7 +7,9 @@ import { faMoon } from "@fortawesome/free-solid-svg-icons";
 
 function MeuPerfil() {
 
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"))
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     const [ativado, setAtivado] = useState(usuarioLogado?.darkMode || false);
 
@@ -30,7 +32,7 @@ function MeuPerfil() {
 
         <div>
             {/* MODO CLARO */}
-            {usuarioLogado.darkMode === true ? <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
+            {usuarioLogado.darkMode === false ? <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
                 <div className="w-350  bg-white rounded-4xl shadow-2xl flex flex-col">
                     <div className="flex juflex flex-row items-center justify-between px-10stify-around">
                         <h1 className="font-extralight text-4xl text-[#859F74] p-20 pb-0 flex items-center ml-10">MEU PERFIL</h1>

@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import profileSemFoto from '../assets/profileSemFoto.png'
 
 function Navbar() {
-    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
+    const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
+        darkMode: false
+    };
 
     // Definindo valores padrão caso o localStorage seja null
     const nomeLogado = usuarioLogado?.nome || "ENTRAR";
@@ -13,7 +15,7 @@ function Navbar() {
     return (
         <div>
             {/* Modo Claro */}
-            {usuarioLogado.darkMode === true ?
+            {usuarioLogado.darkMode === false ?
                 <div className="bg-[#859F74] h-20 grid grid-cols-8 text-xl gap-20 text-white">
                     <div className="flex items-center col-start-1">
                         <h1 className="font-extralight text-3xl ml-10">SYNERGY</h1>
