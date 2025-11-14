@@ -5,7 +5,7 @@ import profileSemFoto from '../assets/profileSemFoto.png'
 function CardMensagem({ id, conteudo, nome, foto, horasAtras }) {
     return (
         <div>
-            <Link to="/mensagemDireta">
+            <Link to={`/mensagemDireta/${id}`}>
                 <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-5 m-20 mt-3 shadow-2xl">
                     <div className="flex flex-row gap-10">
                         <img src={foto} className="w-20 rounded-full" />

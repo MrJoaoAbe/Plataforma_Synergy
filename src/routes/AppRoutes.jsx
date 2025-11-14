@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             { path: "funcionarios", element: <Funcionarios /> },
             { path: "seguidores", element: <Seguidores /> },
             { path: "mensagens", element: <Mensagens /> },
-            { path: "mensagemDireta", element: <MensagemDireta /> },
+            { path: "mensagemDireta/:id", element: <MensagemDireta /> },
             { path: "criarPost", element: <CriarPost /> },
         ],
 

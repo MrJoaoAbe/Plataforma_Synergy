@@ -70,7 +70,7 @@ function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habili
                         <Link to={`/visualizarPerfil/${id}`} className=" bg-[#859F74] py-1 w-60 rounded-2xl text-[#ffffff] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition ">
                             PERFIL
                         </Link>
-                        <Link to="/mensagemDireta" className=" bg-[#859F74] py-1 w-60 rounded-2xl text-[#ffffff] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition ">
+                        <Link to={`/mensagemDireta/${id}`} className=" bg-[#859F74] py-1 w-60 rounded-2xl text-[#ffffff] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition ">
                             ENVIAR MENSAGEM
                         </Link>
                     </div>

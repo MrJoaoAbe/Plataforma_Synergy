@@ -59,8 +59,6 @@ function VisualizarPerfil() {
             seguindo: novaListaSeguindo,
         };
 
-
-
         localStorage.setItem("UsuarioLogado", JSON.stringify(usuarioAtualizado));
 
         fetch(`${API}${usuarios}/${usuarioLogadoLocalStorage.id}`, {
@@ -112,6 +110,38 @@ function VisualizarPerfil() {
 
         if (onPararSeguir) onPararSeguir(id);
     }
+
+
+    function estrelar() {
+
+        const usuarioAvaliado = {
+            ...usuario,
+            avaliacoes: usuario.avaliacoes + 1
+        };
+
+        fetch(`${API}${usuarios}${id}`, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuarioAvaliado),
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erro ao avaliar usuário");
+                }
+                return res.json();
+            })
+            .then(data => {
+                setUsuario(data)
+                alert("Você adicionou uma estrela!");
+            })
+            .catch((err) => {
+                console.error(err);
+                alert("Erro ao avaliar. Tente novamente.");
+            });
+    }
+
 
     return (
         <dir>
@@ -286,7 +316,7 @@ function VisualizarPerfil() {
                                         SEGUIR
                                     </button>}
 
-                                <button className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
+                                <button onClick={estrelar} className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                                     ESTRELAR
                                 </button>
                                 <Link
@@ -470,7 +500,7 @@ function VisualizarPerfil() {
                                         SEGUIR
                                     </button>}
 
-                                <button className="bg-[#859F74] py-2 w-70 rounded-2xl text-[#ffffff] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition">
+                                <button onClick={estrelar} className="bg-[#859F74] py-2 w-70 rounded-2xl text-[#ffffff] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition">
                                     ESTRELAR
                                 </button>
                                 <Link
