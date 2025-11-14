@@ -34,8 +34,8 @@ function Cadastro() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        if (nome === '' || idade === '' || idioma === '' || email === '' || cargo === '' || area === '' || localizacao === '' || foto === ''
-            || resumo === '' || habilidade1 === '' || habilidade2 === '' || habilidade3 === '' || softSkill1 === '' || softSkill2 === '' || softSkill3 === '' || experiencia === ''
+        if (nome === '' || idade === '' || idioma === '' || email === '' || cargo === '' || area === '' || localizacao === ''
+            || resumo === '' || habilidade1 === '' || habilidade2 === '' || softSkill1 === '' || softSkill2 === '' || experiencia === ''
             || formacao === '' || curso === '' || inicio === '' || fim === '' || senha === '' || confirmarSenha === ''
         ) {
             alert("Preencha todos os campos")
@@ -119,43 +119,43 @@ function Cadastro() {
                 <h1 className="font-extralight text-4xl text-[#859F74] p-20 flex items-center ml-10 mt-15">CRIAR CONTA</h1>
                 <div>
                     <form onSubmit={handleSubmit} className="flex flex-col items-center gap-0">
-                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Nome" onChange={(e) => setNome(e.target.value)} />
+                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Nome" onChange={(e) => setNome(e.target.value)} required />
                         <div className="flex flex-row gap-8">
-                            <input type="number" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Idade" onChange={(e) => setIdade(e.target.value)} />
-                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Idioma" onChange={(e) => setIdioma(e.target.value)} />
+                            <input type="number" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Idade" onChange={(e) => setIdade(e.target.value)} required />
+                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Idioma" onChange={(e) => setIdioma(e.target.value)} required />
                         </div>
-                        <input type="email" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="email" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
 
                         <div className="flex flex-row gap-8">
-                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Cargo" onChange={(e) => setCargo(e.target.value)} />
-                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Área" onChange={(e) => setArea(e.target.value)} />
+                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Cargo" onChange={(e) => setCargo(e.target.value)} required />
+                            <input type="text" className="w-60 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Área" onChange={(e) => setArea(e.target.value)} required />
                         </div>
 
-                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Localização" onChange={(e) => setLocalizacao(e.target.value)} />
+                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Localização" onChange={(e) => setLocalizacao(e.target.value)} required />
                         <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Adicionar Foto" onChange={(e) => setFoto(e.target.value)} />
-                        <textarea name="resumo" id="resumo" className="w-130 h-50 border-gray-200 border-4 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Resumo" onChange={(e) => setResumo(e.target.value)} ></textarea>
+                        <textarea name="resumo" id="resumo" className="w-130 h-50 border-gray-200 border-4 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Resumo" onChange={(e) => setResumo(e.target.value)} required></textarea>
                         <div className="flex flex-row gap-5">
-                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Habilidades Técnicas" onChange={(e) => setHabilidade1(e.target.value)} />
-                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Habilidades Técnicas" onChange={(e) => setHabilidade2(e.target.value)} />
+                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Habilidades Técnicas" onChange={(e) => setHabilidade1(e.target.value)} required />
+                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Habilidades Técnicas" onChange={(e) => setHabilidade2(e.target.value)} required />
                             <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Habilidades Técnicas" onChange={(e) => setHabilidade3(e.target.value)} />
                         </div>
                         <div className="flex flex-row gap-5">
-                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Soft Skills" onChange={(e) => setSoftSkill1(e.target.value)} />
-                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Soft Skills" onChange={(e) => setSoftSkill2(e.target.value)} />
+                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Soft Skills" onChange={(e) => setSoftSkill1(e.target.value)} required />
+                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Soft Skills" onChange={(e) => setSoftSkill2(e.target.value)} required />
                             <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Soft Skills" onChange={(e) => setSoftSkill3(e.target.value)} />
                         </div>
 
-                        <textarea name="experiencia" id="experiencia" className="w-130 h-30 border-gray-200 border-4 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Experiência" onChange={(e) => setExperiencia(e.target.value)}></textarea>
+                        <input type="text" name="experiencia" id="experiencia" className="w-130 h-13 border-gray-200 border-4 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Empresa com maior experiencia" onChange={(e) => setExperiencia(e.target.value)} required />
 
                         <div className="flex flex-row gap-5">
-                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Formação" onChange={(e) => setFormacao(e.target.value)} />
-                            <input type="text" className="w-30 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Curso" onChange={(e) => setCurso(e.target.value)} />
-                            <input type="date" className="w-20 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Inicio" onChange={(e) => setInicio(e.target.value)} />
-                            <input type="date" className="w-20 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Fim" onChange={(e) => setFim(e.target.value)} />
+                            <input type="text" className="w-40 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Formação" onChange={(e) => setFormacao(e.target.value)} required />
+                            <input type="text" className="w-30 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Curso" onChange={(e) => setCurso(e.target.value)} required />
+                            <input type="date" className="w-20 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Inicio" onChange={(e) => setInicio(e.target.value)} required />
+                            <input type="date" className="w-20 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Fim" onChange={(e) => setFim(e.target.value)} required />
                         </div>
 
-                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-5" placeholder="Senha" onChange={(e) => setSenha(e.target.value)} />
-                        <input type="text" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg" placeholder="Confirmar Senha" onChange={(e) => setConfirmarSenha(e.target.value)} />
+                        <input type="password" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-5" placeholder="Senha" onChange={(e) => setSenha(e.target.value)} required />
+                        <input type="password" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg" placeholder="Confirmar Senha" onChange={(e) => setConfirmarSenha(e.target.value)} required />
                         <button type="submit" className="bg-[#859F74] w-80 h-15 rounded-2xl text-white mt-15 mb-20">CRIAR CONTA</button>
 
                     </form>

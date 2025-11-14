@@ -144,7 +144,7 @@ function MensagemDireta() {
                     {/* BARRA DE MENSAGEM */}
                     <div className="absolute bottom-10 left-0 right-0 px-10">
                         <form onSubmit={enviarMensagem} className="flex items-center gap-4">
-                            <input type="text" className="flex-1 border-2 border-[#859F74] h-12 rounded-full shadow-md px-5 placeholder:text-[#859F74] placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-[#859F74] transition" placeholder="Digite uma mensagem..."
+                            <input type="text" className="flex-1 border-2 text-[#859F74] border-[#859F74] h-12 rounded-full shadow-md px-5 placeholder:text-[#859F74] placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-[#859F74] transition" placeholder="Digite uma mensagem..."
                                 onChange={(e) => setConteudo(e.target.value)} value={conteudo} />
                             <button type="submit" className="bg-[#859F74] w-12 h-12 rounded-full flex items-center justify-center text-white shadow-md hover:bg-[#6f865f] transition" aria-label="Enviar mensagem">
                                 <FontAwesomeIcon icon={faShare} className="text-white text-xl" />
