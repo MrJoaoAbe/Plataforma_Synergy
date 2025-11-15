@@ -48,6 +48,11 @@ function VisualizarPerfil() {
     }
 
     function seguir() {
+        if (!usuarioLogadoLocalStorage.id) {
+            alert("Você precisa estar logado para seguir alguém.");
+            navigate("/login");
+            return;
+        }
         const listaAtual = usuarioLogadoLocalStorage.seguindo || [];
 
         const novaListaSeguindo = listaAtual.includes(id)
@@ -113,7 +118,11 @@ function VisualizarPerfil() {
 
 
     function estrelar() {
-
+        if (!usuarioLogadoLocalStorage.id) {
+            alert("Você precisa estar logado para seguir alguém.");
+            navigate("/login");
+            return;
+        }
         const usuarioAvaliado = {
             ...usuario,
             avaliacoes: usuario.avaliacoes + 1
@@ -319,12 +328,18 @@ function VisualizarPerfil() {
                                 <button onClick={estrelar} className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                                     ESTRELAR
                                 </button>
-                                <Link
-                                    to={`/mensagemDireta/${id}`}
-                                    className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition"
-                                >
+                                <button
+                                    onClick={() => {
+                                        if (!usuarioLogadoLocalStorage.id) {
+                                            alert("Você precisa estar logado para enviar mensagem.");
+                                            navigate("/login");
+                                            return;
+                                        }
+                                        navigate(`/mensagemDireta/${id}`);
+                                    }}
+                                    className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                                     ENVIAR MENSAGEM
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -503,18 +518,25 @@ function VisualizarPerfil() {
                                 <button onClick={estrelar} className="bg-[#859F74] py-2 w-70 rounded-2xl text-[#ffffff] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition">
                                     ESTRELAR
                                 </button>
-                                <Link
-                                    to={`/mensagemDireta/${id}`}
-                                    className="bg-[#859F74] py-2 w-70 rounded-2xl text-[#ffffff] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition"
-                                >
+                                <button
+                                    onClick={() => {
+                                        if (!usuarioLogadoLocalStorage.id) {
+                                            alert("Você precisa estar logado para enviar mensagem.");
+                                            navigate("/login");
+                                            return;
+                                        }
+                                        navigate(`/mensagemDireta/${id}`);
+                                    }}
+                                    className="bg-white py-2 w-70 rounded-2xl text-[#859F74] border-4 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition">
                                     ENVIAR MENSAGEM
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
-                </div>}
+                </div>
+            }
 
-        </div>
+        </div >
     );
 }
 

@@ -56,7 +56,7 @@ function MeuPerfil() {
 
 
                     <div className="grid grid-cols-3 gap-6 items-center p-20 px-40 text-[#859F74]">
-                        <img src={usuarioLogado === null ? '' : usuarioLogado.foto} className="w-60 rounded-4xl border-4 border-white shadow-xl" />
+                        <img src={usuarioLogado.foto === '' ? { FotoExemplo } : usuarioLogado.foto} className="w-60 rounded-4xl border-4 border-white shadow-xl" />
 
                         <div className="flex flex-col space-y-2 gap-4 text-[#859F74]">
                             <div className="flex gap-2 items-center text-4xl font-light">
@@ -179,7 +179,7 @@ function MeuPerfil() {
 
 
                         <div className="grid grid-cols-3 gap-6 items-center p-20 px-40 text-white">
-                            <img src={usuarioLogado === null ? '' : usuarioLogado.foto} className="w-60 rounded-4xl border-4 border-white shadow-xl" />
+                            <img src={usuarioLogado.foto === '' ? { FotoExemplo } : usuarioLogado.foto} className="w-60 rounded-4xl border-4 border-white shadow-xl" />
 
                             <div className="flex flex-col space-y-2 gap-4 text-white">
                                 <div className="flex gap-2 items-center text-4xl font-light">
