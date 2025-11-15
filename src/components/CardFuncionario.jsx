@@ -1,8 +1,11 @@
 import FotoExemplo from "../assets/Example.jpg"
 import { Link } from "react-router-dom"
 import profileSemFoto from '../assets/profileSemFoto.png'
+import { useNavigate } from "react-router-dom";
 
 function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habilidade3, localizacao, area }) {
+
+    const navigate = useNavigate()
 
     const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado")) || {
         darkMode: false
@@ -38,9 +41,18 @@ function CardFuncionario({ key, id, foto, nome, habilidade1, habilidade2, habili
                         <Link to={`/visualizarPerfil/${id}`} className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             PERFIL
                         </Link>
-                        <Link to={`/mensagemDireta/${id}`} className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <button
+                            onClick={() => {
+                                if (!usuarioLogado.id) {
+                                    alert("Você precisa estar logado para enviar mensagem.");
+                                    navigate("/login");
+                                    return;
+                                }
+                                navigate(`/mensagemDireta/${id}`);
+                            }}
+                            className="bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             ENVIAR MENSAGEM
-                        </Link>
+                        </button>
                     </div>
                 </div>
                 :
