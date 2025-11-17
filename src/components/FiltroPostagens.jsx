@@ -22,7 +22,7 @@ function FiltroPostagens() {
     }
 
     return (
-        <div>
+        <div className="hidden sm:block">
             {usuarioLogado.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col w-100 border-4 border-[#859F74] p-10 gap-5 mt-10 text-[#859F74]">
