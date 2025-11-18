@@ -65,6 +65,7 @@ function Home() {
                         throw new Error("Erro ao atualizar o usuário");
                     }
                     alert("Post criado com sucesso!");
+                    window.location.reload();
                 })
                 .catch(err => console.error("Erro ao criar post:", err));
 
@@ -100,7 +101,7 @@ function Home() {
                 </div>
                 :
                 //modo escuro
-                <div className="bg-[#1A1D1A] pb-10 rounded-4xl shadow-2xl flex flex-col">
+                <div className="bg-[#1A1D1A] pb-10 rounded-4xl shadow-2xl flex flex-col text-white">
                     <div className="flex flex-row items-center justify-between px-10">
                         <h1 className="font-extralight text-4xl text-[#ffffff] p-15 flex items-center">
                             CRIAR POST
@@ -113,7 +114,7 @@ function Home() {
                     <form onSubmit={handleSubmit} className="flex flex-col gap-10 justify-center items-center">
                         <input type="text" className="w-130 border-white border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#ffffff] placeholder:text-lg" placeholder="Titulo da postagem" required
                             onChange={e => setTitulo(e.target.value)} />
-                        <textarea type="text" className="w-130 h-80 border-white  border-4 rounded-3xl shadow-2xl pl-5 placeholder:text-[#ffffff] placeholder:text-lg" placeholder="Mensagem" required
+                        <textarea type="text" className="w-130 h-80 border-white  border-4 rounded-3xl shadow-2xl pl-5 pt-5 placeholder:text-[#ffffff] placeholder:text-lg" placeholder="Mensagem" required
                             onChange={e => setMensagem(e.target.value)} />
                         <input type="text" className="w-130 border-white  border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#ffffff] placeholder:text-lg" placeholder="URL da imagem"
                             onChange={e => setImagem(e.target.value)} />
