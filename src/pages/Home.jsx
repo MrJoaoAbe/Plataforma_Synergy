@@ -33,7 +33,7 @@ function Home() {
             {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
-                    <div className="flex flex-row items-center justify-between px-10">
+                    <div className="flex flex-row items-center justify-between lg:px-10">
                         <h1 className="font-extralight text-4xl text-[#859F74] p-15 flex items-center">
                             HOME
                         </h1>
@@ -59,7 +59,7 @@ function Home() {
                 :
                 //dark mode
                 <div className="bg-[#1A1D1A] min-h-screen rounded-4xl shadow-2xl flex flex-col">
-                    <div className="flex flex-row items-center justify-between px-10">
+                    <div className="flex flex-row items-center justify-between lg:px-10">
                         <h1 className="font-extralight text-4xl text-[#ffffff] p-15 flex items-center">
                             HOME
                         </h1>

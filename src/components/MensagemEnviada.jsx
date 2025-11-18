@@ -49,12 +49,12 @@ function MensagemEnviada({ idOutroUsuario, atualizarMensagens }) {
                         const diferencaHoras = Math.floor(diferencaMs / (1000 * 60 * 60));
 
                         return (
-                            <div key={msg.id} className="pr-10 flex flex-row items-center justify-end gap-5 my-5">
+                            <div key={msg.id} className="pr-5 lg:pr-10 flex flex-row items-center justify-end gap-5 my-5">
                                 <div className="flex flex-row gap-3 bg-white p-2 px-4 rounded-full shadow-2xl ">
-                                    <p className="text-[#859F74] text-xl">{msg.conteudo}</p>
-                                    <p className="text-[#859F74] text-xl">{diferencaHoras}h</p>
+                                    <p className="text-[#859F74] lg:text-xl">{msg.conteudo}</p>
+                                    <p className="text-[#859F74] lg:text-xl">{diferencaHoras}h</p>
                                 </div>
-                                <img src={usuarioLogadoLocalStorage.foto} className="w-16 h-16 rounded-full shadow-xl" />
+                                <img src={usuarioLogadoLocalStorage.foto} className="w-10 h-10 lg:w-16 lg:h-16 rounded-full shadow-xl" />
                             </div>
                         );
                     })}
@@ -70,12 +70,12 @@ function MensagemEnviada({ idOutroUsuario, atualizarMensagens }) {
                         const diferencaHoras = Math.floor(diferencaMs / (1000 * 60 * 60));
 
                         return (
-                            <div key={msg.id} className="pr-10 flex flex-row items-center justify-end gap-5 my-5">
+                            <div key={msg.id} className="pr-5 lg:pr-10 flex flex-row items-center justify-end gap-5 my-5">
                                 <div className="flex flex-row gap-3 bg-white p-2 px-4 rounded-full shadow-2xl ">
-                                    <p className="text-[#859F74] text-xl">{msg.conteudo}</p>
-                                    <p className="text-[#859F74] text-xl">{diferencaHoras}h</p>
+                                    <p className="text-[#859F74] lg:text-xl">{msg.conteudo}</p>
+                                    <p className="text-[#859F74] lg:text-xl">{diferencaHoras}h</p>
                                 </div>
-                                <img src={usuarioLogadoLocalStorage.foto} className="w-16 h-16 rounded-full shadow-xl" />
+                                <img src={usuarioLogadoLocalStorage.foto} className="w-10 h-10 lg:w-16 lg:h-16 rounded-full shadow-xl" />
                             </div>
                         );
                     })}

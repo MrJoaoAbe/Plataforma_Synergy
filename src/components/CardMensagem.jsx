@@ -14,15 +14,15 @@ function CardMensagem({ id, conteudo, nome, foto, horasAtras }) {
                 //modo claro
                 <div>
                     <Link to={`/mensagemDireta/${id}`}>
-                        <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-5 m-20 mt-3 shadow-2xl">
+                        <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-2 lg:p-5 lg:m-20 mt-3 shadow-2xl">
                             <div className="flex flex-row gap-10">
-                                <img src={foto} className="w-20 rounded-full" />
+                                <img src={foto} className="w-15 lg:w-20 rounded-full" />
 
                                 <div className="flex flex-col justify-center text-[#859F74] mr-20">
-                                    <p className="text-4xl">{nome}</p>
+                                    <p className="text-xl lg:text-4xl">{nome}</p>
                                     <div className="flex flex-row gap-10">
-                                        <p className="text-xl ml-5">{conteudo}</p>
-                                        <p className="text-xl">{horasAtras}h</p>
+                                        <p className="lg:text-xl ml-5">{conteudo}</p>
+                                        <p className="lg:text-xl">{horasAtras}h</p>
                                     </div>
 
 
@@ -35,15 +35,15 @@ function CardMensagem({ id, conteudo, nome, foto, horasAtras }) {
                 //modo escuro
                 <div>
                     <Link to={`/mensagemDireta/${id}`}>
-                        <div className="flex flex-col items-center justify-center bg-[#111411] rounded-4xl p-5 m-20 mt-3 shadow-2xl">
+                        <div className="flex flex-col items-center justify-center bg-[#111411] rounded-4xl p-2 lg:p-5 lg:m-20 mt-3 shadow-2xl">
                             <div className="flex flex-row gap-10">
-                                <img src={foto} className="w-20 rounded-full" />
+                                <img src={foto} className="w-15 lg:w-20 rounded-full" />
 
                                 <div className="flex flex-col justify-center text-[#ffffff] mr-20">
-                                    <p className="text-4xl">{nome}</p>
+                                    <p className="text-xl lg:text-4xl">{nome}</p>
                                     <div className="flex flex-row gap-10">
-                                        <p className="text-xl ml-5">{conteudo}</p>
-                                        <p className="text-xl">{horasAtras}h</p>
+                                        <p className="lg:text-xl ml-5">{conteudo}</p>
+                                        <p className="lg:text-xl">{horasAtras}h</p>
                                     </div>
 
 

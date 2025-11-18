@@ -11,7 +11,7 @@ function CardPostagens({ key, id, autor, foto, titulo, mensagem, imagem }) {
             {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div>
-                    <div className="flex flex-col items-start justify-start bg-white rounded-4xl p-5 mt-5 mx-10  shadow-2xl">
+                    <div className="flex flex-col items-start justify-start bg-white rounded-4xl p-5 mt-5 mx-3 lg:mx-10  shadow-2xl">
                         <div className="flex flex-row gap-10">
                             <div className="flex flex-row items-center gap-5 justify-start">
                                 <img src={foto ? foto : FotoExemplo} alt="Usuario1" className="w-10 rounded-full" />
