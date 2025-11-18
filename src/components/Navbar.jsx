@@ -6,10 +6,8 @@ import profileSemFoto from '../assets/profileSemFoto.png';
 
 function Navbar() {
     const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
-    const darkModeUsuario = JSON.parse(localStorage.getItem("UsuarioLogado")) || { darkMode: false 
+    const darkModeUsuario = JSON.parse(localStorage.getItem("UsuarioLogado")) || { darkMode: false };
 
-    };
-    // Definindo valores padrão caso o localStorage seja null
     const nomeLogado = usuarioLogado?.nome || "ENTRAR";
     const fotoLogado = usuarioLogado?.foto || profileSemFoto;
 
@@ -24,7 +22,7 @@ function Navbar() {
     return (
         <div>
 
-            <div className={`${bgColor} h-20 grid grid-cols-8 text-xl text-white hidden md:grid`}>
+            <div className={`${bgColor} h-20 grid-cols-8 text-xl text-white hidden md:grid`}>
 
                 <div className="flex items-center col-start-1">
                     <h1 className="font-extralight text-3xl ml-10">SYNERGY</h1>
@@ -67,7 +65,6 @@ function Navbar() {
                     </NavLink>
                 </div>
             </div>
-
 
             <div className={`${bgColor} md:hidden h-20 flex items-center justify-between px-6 text-white`}>
                 <h1 className="font-extralight text-3xl">SYNERGY</h1>
