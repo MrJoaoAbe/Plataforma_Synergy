@@ -504,10 +504,10 @@ void loop() {
 
 # 🔗 **Links Importantes**
 
-* Vídeo explicativo →
-* Repositório GitHub →
-* Deploy da plataforma →
-* Simulação WOKWI →
+* Vídeo explicativo → https://youtu.be/FXnX6iropeU?si=PZk-B_YBZB5ooIRO
+* Repositório GitHub → https://github.com/MrJoaoAbe/Plataforma_Synergy.git
+* Deploy da plataforma → https://plataformasynergy.vercel.app/
+* Simulação WOKWI → https://wokwi.com/projects/447622993547253761
 
 ---
 
