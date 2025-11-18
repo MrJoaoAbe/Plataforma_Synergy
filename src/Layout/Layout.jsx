@@ -24,8 +24,8 @@ function Layout() {
                 <div className="min-h-screen flex flex-col">
                     <Navbar />
 
-                    <div className="flex flex-1 px-20 py-10 gap-10 bg-[#DFDFDF]">
-                        <div className="w-1/4">
+                    <div className="flex flex-1 lg:px-20 py-10 gap-10 bg-[#DFDFDF]">
+                        <div className="hidden lg:block lg:w-1/4">
                             {usuarioLogado && (
                                 <MiniPerfil
                                     foto={usuarioLogado.foto}
@@ -44,7 +44,7 @@ function Layout() {
                             <Outlet />
                         </div>
 
-                        <div className="w-1/4">
+                        <div className="hidden lg:block lg:w-1/4">
                             <MelhoresProfissionais />
                             {location.pathname === '/funcionarios' && <FiltroAvancado />}
                             {location.pathname === '/' && <FiltroPostagens />}
@@ -58,8 +58,8 @@ function Layout() {
                 <div className="min-h-screen flex flex-col">
                     <Navbar />
 
-                    <div className="flex flex-1 px-20 py-10 gap-10 bg-[#111411]">
-                        <div className="w-1/4">
+                    <div className="flex flex-1 lg:px-20 py-10 gap-10 bg-[#111411]">
+                        <div className="hidden lg:block lg:w-1/4">
                             {usuarioLogado && (
                                 <MiniPerfil
                                     foto={usuarioLogado.foto}
@@ -78,7 +78,7 @@ function Layout() {
                             <Outlet />
                         </div>
 
-                        <div className="w-1/4">
+                        <div className="hidden lg:block lg:w-1/4">
                             <MelhoresProfissionais />
                             {location.pathname === '/funcionarios' && <FiltroAvancado />}
                             {location.pathname === '/' && <FiltroPostagens />}

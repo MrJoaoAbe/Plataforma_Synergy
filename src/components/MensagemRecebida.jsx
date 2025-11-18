@@ -44,10 +44,10 @@ function MensagemRecebida({ idOutroUsuario, fotoOutroUsuario, atualizarMensagens
 
                 return (
                     <div key={msg.id} className="pl-10 flex flex-row items-center gap-5 my-5">
-                        <img src={fotoOutroUsuario} className="w-16 h-16 rounded-full shadow-xl" />
+                        <img src={fotoOutroUsuario} className="h-10 w-10 lg:w-16 lg:h-16 rounded-full shadow-xl" />
                         <div className="flex flex-row gap-3 bg-white p-2 px-4 rounded-full shadow-2xl ">
-                            <p className="text-[#859F74] text-xl">{msg.conteudo}</p>
-                            <p className="text-[#859F74] text-xl">{diferencaHoras}h</p>
+                            <p className="text-[#859F74] lg:text-xl">{msg.conteudo}</p>
+                            <p className="text-[#859F74] lg:text-xl">{diferencaHoras}h</p>
                         </div>
                     </div>
                 );
