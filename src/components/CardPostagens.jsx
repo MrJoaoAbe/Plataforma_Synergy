@@ -1,4 +1,4 @@
-import FotoExemplo from "../assets/Example.jpg"
+import FotoExemplo from "../assets/profileSemFoto.png"
 
 function CardPostagens({ key, id, autor, foto, titulo, mensagem, imagem }) {
 
