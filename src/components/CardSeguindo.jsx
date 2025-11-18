@@ -47,14 +47,14 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
         <div>
             {usuarioLogadoLocalStorage.darkMode === false ?
                 //modo claro
-                <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-10 mx-20 my-5 shadow-2xl">
+                <div className="flex flex-col items-center justify-center bg-white rounded-4xl p-3 lg:p-10 lg:mx-20 my-5 shadow-2xl">
                     <div className="flex flex-row gap-10">
                         <img src={foto} alt="Usuario1" className="w-25 rounded-full" />
 
                         <div className="flex flex-col text-[#859F74]">
-                            <p className="text-4xl">{nome}</p>
-                            <p className="text-2xl">{area}</p>
-                            <p className="text-2xl">{localizacao}</p>
+                            <p className="text-2xl lg:text-4xl">{nome}</p>
+                            <p className="text-lg lg:text-2xl">{area}</p>
+                            <p className="text-lg lg:text-2xl">{localizacao}</p>
                             <div className="flex flex-row gap-5">
 
                             </div>
@@ -62,24 +62,24 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
                     </div>
 
                     <div className="flex flex-row items-center gap-4 mt-5">
-                        <Link to={`/visualizarPerfil/${id}`} className=" bg-white py-1 w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
+                        <Link to={`/visualizarPerfil/${id}`} className=" bg-white py-1 w-30 lg:w-60 rounded-2xl text-[#859F74] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#859F74] hover:text-white transition ">
                             PERFIL
                         </Link>
-                        <button onClick={handleClick} to="/mensagens" className=" bg-white py-1 w-60 rounded-2xl text-[#ff0000] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ff0000] hover:text-white transition ">
+                        <button onClick={handleClick} to="/mensagens" className=" bg-white py-1 w-30 lg:w-60 rounded-2xl text-[#ff0000] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ff0000] hover:text-white transition ">
                             DEIXAR DE SEGUIR
                         </button>
                     </div>
                 </div>
                 :
                 //modo escuro
-                <div className="flex flex-col items-center justify-center bg-[#111411] rounded-4xl p-10 mx-20 my-5 shadow-2xl">
+                <div className="flex flex-col items-center justify-center bg-[#111411] rounded-4xl p-3 lg:p-10 lg:mx-20 my-5 shadow-2xl">
                     <div className="flex flex-row gap-10">
                         <img src={foto} alt="Usuario1" className="w-25 rounded-full" />
 
                         <div className="flex flex-col text-[#ffffff]">
-                            <p className="text-4xl">{nome}</p>
-                            <p className="text-2xl">{area}</p>
-                            <p className="text-2xl">{localizacao}</p>
+                            <p className="text-2xl lg:text-4xl">{nome}</p>
+                            <p className="text-lg lg:text-2xl">{area}</p>
+                            <p className="text-lg lg:text-2xl">{localizacao}</p>
                             <div className="flex flex-row gap-5">
 
                             </div>
@@ -87,10 +87,10 @@ function CardSeguindo({ key, id, foto, nome, area, localizacao }) {
                     </div>
 
                     <div className="flex flex-row items-center gap-4 mt-5">
-                        <Link to={`/visualizarPerfil/${id}`} className=" bg-[#859F74] py-1 w-60 rounded-2xl text-[#ffffff] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition ">
+                        <Link to={`/visualizarPerfil/${id}`} className=" bg-[#859F74] py-1 w-30 lg:w-60 rounded-2xl text-[#ffffff] border-2 border-[#859F74] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#859F74] transition ">
                             PERFIL
                         </Link>
-                        <button onClick={handleClick} to="/mensagens" className=" bg-[#ff0000] py-1 w-60 rounded-2xl text-[#ffffff] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#ff0000] transition ">
+                        <button onClick={handleClick} to="/mensagens" className=" bg-[#ff0000] py-1 w-30 lg:w-60 rounded-2xl text-[#ffffff] border-2 border-[#ff0000] flex items-center justify-center shadow hover:bg-[#ffffff] hover:text-[#ff0000] transition ">
                             DEIXAR DE SEGUIR
                         </button>
                     </div>
