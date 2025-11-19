@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 function Login() {
 
@@ -12,8 +11,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const usuariosExistentes = JSON.parse(localStorage.getItem("Usuarios")) || [];
-
+        
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -40,26 +38,54 @@ function Login() {
             .catch(err => console.error("Erro ao buscar usuários:", err));
     }
 
-
     return (
-        <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center">
-            <div className="w-200 h-200 bg-white rounded-4xl shadow-2xl flex flex-col">
-                <h1 className="font-extralight text-4xl text-[#859F74] p-20 flex items-center ml-10 mt-15">LOGIN</h1>
-                <div>
-                    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
-                        <input type="email" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg mb-10" placeholder="Email"
-                            onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" className="w-130 border-gray-200 border-4 h-13 rounded-3xl shadow-2xl pl-5 placeholder:text-[#859F74] placeholder:text-lg" placeholder="Senha"
-                            onChange={(e) => setSenha(e.target.value)} />
-                        <button type="submit" className="bg-[#859F74] w-80 h-15 rounded-2xl text-white mt-15 mb-0">ENTRAR</button>
-                        <p className="pt-0 text-[#859F74]">Não possui uma conta, clique <Link to="/cadastro" className="font-black">AQUI</Link> para se criar uma</p>
-                    </form>
-                </div>
+        <div className="bg-[#DFDFDF] min-h-screen flex items-center justify-center px-6 py-10">
+            <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10 flex flex-col">
 
+                <h1 className="font-light text-4xl text-[#859F74] text-center mb-10 tracking-wide">
+                    LOGIN
+                </h1>
+
+                <form 
+                    onSubmit={handleSubmit}
+                    className="flex flex-col gap-6 w-full"
+                >
+
+                    <input
+                        type="email"
+                        className="w-full border-2 border-gray-300 h-14 rounded-2xl shadow-md pl-4 placeholder:text-[#859F74] placeholder:text-lg"
+                        placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    <input
+                        type="password"
+                        className="w-full border-2 border-gray-300 h-14 rounded-2xl shadow-md pl-4 placeholder:text-[#859F74] placeholder:text-lg"
+                        placeholder="Senha"
+                        onChange={(e) => setSenha(e.target.value)}
+                    />
+
+                    <button
+                        type="submit"
+                        className="bg-[#859F74] w-full h-14 rounded-2xl text-white text-lg shadow-lg active:scale-95 transition"
+                    >
+                        ENTRAR
+                    </button>
+
+                    <p className="text-[#859F74] text-center text-base">
+                        Não possui uma conta? Clique{" "}
+                        <Link to="/cadastro" className="font-bold underline">
+                            AQUI
+                        </Link>{" "}
+                        para criar uma.
+                    </p>
+
+                </form>
             </div>
         </div>
     )
 }
 
 export default Login
+
 
