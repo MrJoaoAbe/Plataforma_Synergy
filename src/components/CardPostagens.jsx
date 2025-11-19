@@ -7,7 +7,7 @@ function CardPostagens({ key, id, autor, foto, titulo, mensagem, imagem }) {
     };
 
     return (
-        <div>
+        <div className="hidden sm:block">
             {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div>

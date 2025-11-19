@@ -35,7 +35,7 @@ function MelhoresProfissionais() {
     }, [])
 
     return (
-        <div>
+        <div className="hidden sm:block">
             {usuarioLogadoLocalStorage.darkMode === false ?
                 // Modo Claro
                 <div className="bg-[#EDEBEB] rounded-4xl shadow-2xl flex flex-col items-center w-100 border-4 p-5 border-[#859F74] text-[#859F74]">
