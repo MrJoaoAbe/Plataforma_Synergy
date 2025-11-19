@@ -29,7 +29,7 @@ function Home() {
     }, [])
 
     return (
-        <div className="hidden sm:block">
+        <div>
             {usuarioLogado.darkMode === false ?
                 // modo claro
                 <div className="bg-[#EDEBEB] min-h-screen rounded-4xl shadow-2xl flex flex-col">
